@@ -28,42 +28,41 @@ export default function ReservationForm() {
     }
   }
 
-  const inputClass = "w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:border-gold";
+  const inputClass = "w-full bg-white/5 border border-white/10 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brass";
 
   return (
     <form onSubmit={submit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium mb-1">Name</label>
+          <label className="block text-sm font-medium mb-1 text-white/70">Name</label>
           <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className={inputClass} />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Phone</label>
+          <label className="block text-sm font-medium mb-1 text-white/70">Phone</label>
           <input required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className={inputClass} />
         </div>
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Email</label>
+        <label className="block text-sm font-medium mb-1 text-white/70">Email</label>
         <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass} />
       </div>
       <div className="grid sm:grid-cols-3 gap-5">
         <div>
-          <label className="block text-sm font-medium mb-1">Date</label>
+          <label className="block text-sm font-medium mb-1 text-white/70">Date</label>
           <input required type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} className={inputClass} />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Time</label>
+          <label className="block text-sm font-medium mb-1 text-white/70">Time</label>
           <select required value={form.time} onChange={(e) => setForm({ ...form, time: e.target.value })} className={inputClass}>
             <option value="">Select</option>
-            {["11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM",
-              "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"
+            {["12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM"
             ].map((t) => (
               <option key={t} value={t}>{t}</option>
             ))}
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Guests</label>
+          <label className="block text-sm font-medium mb-1 text-white/70">Guests</label>
           <select required value={form.guests} onChange={(e) => setForm({ ...form, guests: e.target.value })} className={inputClass}>
             {[1, 2, 3, 4, 5, 6, 7, 8, "9+"].map((g) => (
               <option key={g} value={g}>{g} {g === 1 ? "Guest" : "Guests"}</option>
@@ -72,7 +71,7 @@ export default function ReservationForm() {
         </div>
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Special Requests</label>
+        <label className="block text-sm font-medium mb-1 text-white/70">Special Requests</label>
         <textarea
           rows={3}
           value={form.message}
@@ -84,12 +83,12 @@ export default function ReservationForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-gold text-dark py-3 text-sm font-semibold tracking-wide hover:bg-gold-dark transition-colors disabled:opacity-50"
+        className="w-full bg-brass text-dark py-3 text-sm font-semibold tracking-wide hover:bg-brass-light transition-colors disabled:opacity-50"
       >
         {status === "loading" ? "Submitting..." : status === "success" ? "Reservation Confirmed!" : "Reserve Table"}
       </button>
       {status === "success" && (
-        <p className="text-green-600 text-sm text-center">Thank you! We&apos;ll confirm your reservation shortly.</p>
+        <p className="text-green-400 text-sm text-center">Thank you! We&apos;ll confirm your reservation shortly.</p>
       )}
     </form>
   );

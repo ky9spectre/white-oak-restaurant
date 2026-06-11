@@ -27,56 +27,56 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} className="bg-white p-8 shadow-sm space-y-5">
+    <form onSubmit={submit} className="bg-white/5 border border-white/10 p-8 space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium mb-1">Name</label>
+          <label className="block text-sm font-medium mb-1 text-white/70">Name</label>
           <input
             required
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:border-gold"
+            className="w-full bg-white/5 border border-white/10 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brass"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Email</label>
+          <label className="block text-sm font-medium mb-1 text-white/70">Email</label>
           <input
             required
             type="email"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:border-gold"
+            className="w-full bg-white/5 border border-white/10 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brass"
           />
         </div>
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Subject</label>
+        <label className="block text-sm font-medium mb-1 text-white/70">Subject</label>
         <input
           required
           value={form.subject}
           onChange={(e) => setForm({ ...form, subject: e.target.value })}
-          className="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:border-gold"
+          className="w-full bg-white/5 border border-white/10 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brass"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Message</label>
+        <label className="block text-sm font-medium mb-1 text-white/70">Message</label>
         <textarea
           required
           rows={5}
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:border-gold resize-none"
+          className="w-full bg-white/5 border border-white/10 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brass resize-none"
         />
       </div>
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-dark text-white py-3 text-sm font-semibold tracking-wide hover:bg-gold hover:text-dark transition-colors disabled:opacity-50"
+        className="w-full bg-brass text-dark py-3 text-sm font-semibold tracking-wide hover:bg-brass-light transition-colors disabled:opacity-50"
       >
         {status === "loading" ? "Sending..." : status === "success" ? "Message Sent!" : "Send Message"}
       </button>
       {status === "success" && (
-        <p className="text-green-600 text-sm text-center">Thank you! We&apos;ll get back to you shortly.</p>
+        <p className="text-green-400 text-sm text-center">Thank you! We&apos;ll get back to you shortly.</p>
       )}
     </form>
   );

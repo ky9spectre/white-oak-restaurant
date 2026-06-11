@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Cinzel_Decorative, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cinzel = Cinzel_Decorative({
+  variable: "--font-cinzel",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700", "900"],
 });
 
 const inter = Inter({
@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "White Oak Restaurant & Bar | Houston Galleria",
+  title: "White Oak Restaurant & Bar | Paharganj, New Delhi",
   description:
-    "White Oak Restaurant & Bar at The Galleria in Houston, TX. American cuisine, weekend brunch, craft cocktails, and private dining.",
+    "White Oak Restaurant & Bar at Paharganj, New Delhi. North Indian, Chinese, Italian cuisine, cocktails, and live music. Open 12 PM – 1 AM daily.",
 };
 
 export default function RootLayout({
@@ -28,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen flex flex-col">
+    <html lang="en" className={`${cinzel.variable} ${inter.variable}`}>
+      <body className="min-h-screen flex flex-col bg-dark text-cream">
         <Header />
         <main className="flex-1 pt-16">{children}</main>
         <Footer />

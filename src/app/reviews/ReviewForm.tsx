@@ -28,19 +28,19 @@ export default function ReviewForm() {
   }
 
   return (
-    <form onSubmit={submit} className="bg-white p-8 shadow-sm space-y-5">
+    <form onSubmit={submit} className="bg-white/5 border border-white/10 p-8 space-y-5">
       <div>
-        <label className="block text-sm font-medium mb-1">Name</label>
+        <label className="block text-sm font-medium mb-1 text-white/70">Name</label>
         <input
           required
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
-          className="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:border-gold"
+          className="w-full bg-white/5 border border-white/10 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brass"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Rating</label>
+        <label className="block text-sm font-medium mb-1 text-white/70">Rating</label>
         <div className="flex gap-1">
           {[1, 2, 3, 4, 5].map((s) => (
             <button
@@ -51,7 +51,7 @@ export default function ReviewForm() {
             >
               <Star
                 size={24}
-                className={s <= form.rating ? "fill-gold text-gold" : "text-gray-200 hover:text-gold/50"}
+                className={s <= form.rating ? "fill-brass text-brass" : "text-white/20 hover:text-brass/50"}
               />
             </button>
           ))}
@@ -59,26 +59,26 @@ export default function ReviewForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Your Review</label>
+        <label className="block text-sm font-medium mb-1 text-white/70">Your Review</label>
         <textarea
           required
           rows={4}
           value={form.text}
           onChange={(e) => setForm({ ...form, text: e.target.value })}
-          className="w-full border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:border-gold resize-none"
+          className="w-full bg-white/5 border border-white/10 px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brass resize-none"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-dark text-white py-3 text-sm font-semibold tracking-wide hover:bg-gold hover:text-dark transition-colors disabled:opacity-50"
+        className="w-full bg-brass text-dark py-3 text-sm font-semibold tracking-wide hover:bg-brass-light transition-colors disabled:opacity-50"
       >
         {status === "loading" ? "Submitting..." : status === "success" ? "Review Submitted!" : "Submit Review"}
       </button>
 
       {status === "success" && (
-        <p className="text-green-600 text-sm text-center">Thank you! Your review will appear after approval.</p>
+        <p className="text-green-400 text-sm text-center">Thank you! Your review will appear after approval.</p>
       )}
     </form>
   );

@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model MenuItem {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       String
+  category    String   // "breakfast", "allday", "brunch", "drinks"
+  section     String   // "starters", "salads", "handhelds", "farm-to-table", "sweets", "cocktails", etc.
+  featured    Boolean  @default(false)
+  available   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  name      String
+  rating    Int      // 1-5
+  text      String
+  source    String   // "google", "yelp", "opentable", "website"
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Reservation {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  date      String
+  time      String
+  guests    Int
+  message   String?
+  status    String   @default("pending") // "pending", "confirmed", "cancelled"
+  createdAt DateTime @default(now())
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  url       String
+  alt       String
+  caption   String?
+  category  String   // "food", "interior", "drinks", "events"
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id    String @id @default("singleton")
+  phone String
+  email String
+  address String
+  hours String
+}

@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -12,8 +12,8 @@ model MenuItem {
   name        String
   description String
   price       String
-  category    String   // "breakfast", "allday", "brunch", "drinks"
-  section     String   // "starters", "salads", "handhelds", "farm-to-table", "sweets", "cocktails", etc.
+  category    String
+  section     String
   featured    Boolean  @default(false)
   available   Boolean  @default(true)
   createdAt   DateTime @default(now())
@@ -23,9 +23,9 @@ model MenuItem {
 model Review {
   id        String   @id @default(cuid())
   name      String
-  rating    Int      // 1-5
+  rating    Int
   text      String
-  source    String   // "google", "yelp", "opentable", "website"
+  source    String
   approved  Boolean  @default(false)
   createdAt DateTime @default(now())
 }
@@ -39,7 +39,7 @@ model Reservation {
   time      String
   guests    Int
   message   String?
-  status    String   @default("pending") // "pending", "confirmed", "cancelled"
+  status    String   @default("pending")
   createdAt DateTime @default(now())
 }
 
@@ -48,7 +48,7 @@ model GalleryImage {
   url       String
   alt       String
   caption   String?
-  category  String   // "food", "interior", "drinks", "events"
+  category  String
   createdAt DateTime @default(now())
 }
 
@@ -60,12 +60,4 @@ model ContactMessage {
   message   String
   read      Boolean  @default(false)
   createdAt DateTime @default(now())
-}
-
-model SiteSettings {
-  id    String @id @default("singleton")
-  phone String
-  email String
-  address String
-  hours String
 }
